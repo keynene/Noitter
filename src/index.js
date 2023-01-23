@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './components/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import firebase from './firebase.js';
+console.log(firebase)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
