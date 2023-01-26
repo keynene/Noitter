@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import firebase from './firebase.js';
+import firebase from 'firebase/compat/app';
 import { BrowserRouter } from 'react-router-dom';
 console.log(firebase)
 
