@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authService } from "fbase";
+import { authService, firebaseInstance } from "fbase";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -35,7 +35,22 @@ const Auth = () => {
       setError(error.message);
     }
   };
-const toggleAccount = () => setNewAccount((prev) => !prev)
+const toggleAccount = () => setNewAccount((prev) => !prev);
+
+/**  firebase 이용하여 소셜 로그인 기능 구현 */
+const onSocialClick = async (e) => {
+  const {
+    target: { name }
+  } = e;
+
+  let provider;
+  if (name === "google"){
+    provider = new firebaseInstance.auth.GoogleAuthProvider();
+  } else if (name === "github"){
+    provider = new firebaseInstance.auth.GithubAuthProvider();
+  }
+  const data = await authService.signInWithPopup(provider);
+};
 
   return (
     <div>
@@ -62,8 +77,8 @@ const toggleAccount = () => setNewAccount((prev) => !prev)
       </form>
 			<span onClick={ toggleAccount } > { newAccount ? "Sign in" : "Create Account" }</span>
       <div>
-        <button>Continue with Google</button>
-        <button>Continue with Github</button>
+        <button onClick={ onSocialClick } name="google">Continue with Google</button>
+        <button onClick={ onSocialClick } name="github">Continue with Github</button>
       </div>
     </div>
   );
