@@ -9,6 +9,7 @@ function App() {
   
   const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userObj, setUserObj] = useState(null);
 
   useEffect(()=>{
     //누가 Create Account를 클릭하거나, Login을 하거나 일단 "변화가 있으면" 실행
@@ -16,6 +17,9 @@ function App() {
       if(user){
         //user == true이면 우리유저니까 로그인
         setIsLoggedIn(true);
+        //authService가 변경될 때 user값을 userObj에 넣기
+        setUserObj(user);
+
       } else {
         setIsLoggedIn(false);
       }
@@ -28,7 +32,7 @@ function App() {
     <div>
       {/*  useEffect를 통해 init(Create Account나 Login 즉 로그인 시도한 흔적이 있으면 실행)을 확인 */}
       {/*  init이 true이면 AppRouter실행 (Router.js에서 확인) */}
-      { init ? <AppRouter isLoggedIn={ isLoggedIn }/> : "Initializing..." }
+      { init ? <AppRouter isLoggedIn={ isLoggedIn } userObj={ userObj }/> : "Initializing..." }
       <footer>&copy; {new Date().getFullYear()} Noitter</footer>
     </div>
 

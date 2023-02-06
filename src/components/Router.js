@@ -5,7 +5,7 @@ import Navigation from 'components/Navigation';
 import Profile from 'routes/Profile';
 
 
-const AppRouter = ({ isLoggedIn }) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
 	return (
 		<div>
 			{ isLoggedIn && <Navigation /> }
@@ -14,7 +14,7 @@ const AppRouter = ({ isLoggedIn }) => {
 				{/* App의 useEffect를 통해 확인했던 isLoggedin이 true이면 Home을 아니면 Auth를 실행 */}
 				{ isLoggedIn ? (
 					<>
-						<Route path='/' element={ <Home /> } />
+						<Route path='/' element={ <Home userObj={ userObj } /> } />
 						<Route path='/profile' element={ <Profile /> } />
 					</> 
 				) : (
