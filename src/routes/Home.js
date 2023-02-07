@@ -61,11 +61,18 @@ const Home = ({ userObj }) => {
 	}
 	return(
 		<div>
+			{/* Create */}
 			<form onSubmit={ onSubmit }>
-				<input value={ noweet } onChange={ onChange } type="text" placeholder="'What's on your mind?" maxLength={120} />
+				<input 
+					value={ noweet } 
+					onChange={ onChange } 
+					type="text" 
+					placeholder="'What's on your mind?" 
+					maxLength={120} />
 				<input type="submit" value="Noweet" />
 			</form>
 			<div>
+				{/* Read */}
 				{ noweets.map((noweet) => 
 					<Noweet 
 						key={noweet.id} 

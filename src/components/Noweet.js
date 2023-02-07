@@ -42,6 +42,7 @@ const Noweet = ({ noweetObj, isOwner }) => {
 
 	return (
 		<div>
+			{/* Update */}
 			{ 
 				//2. editing이 true면 수정하는폼 보여줌, false이면 수정/삭제 버튼 보여줌
 				editing ? (
@@ -66,7 +67,9 @@ const Noweet = ({ noweetObj, isOwner }) => {
 						<h4>{ noweetObj.text }</h4>
 						{isOwner && (
 							<>
+								{/* Delete */}
 								<button onClick={ onDeleteClick }>Delete Noweet</button>
+								{/* Update */}
 								<button onClick={ toggleEditing }>Edit Noweet</button>
 							</>)
 						}
