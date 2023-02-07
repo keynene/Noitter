@@ -67,9 +67,10 @@ const Home = ({ userObj }) => {
 			</form>
 			<div>
 				{ noweets.map((noweet) => 
-					<Noweet key={noweet.id} 
-					noweetObj={noweet} 
-					isOwner={noweet.creatorId === userObj.uid} />
+					<Noweet 
+						key={noweet.id} 
+						noweetObj={noweet} 
+						isOwner={noweet.creatorId === userObj.uid} />
 					)}
 			</div>
 		</div>
