@@ -1,3 +1,4 @@
+import Noweet from 'components/Noweet';
 import { dbService } from 'fbase';
 import React, { useEffect, useState } from 'react';
 
@@ -65,11 +66,11 @@ const Home = ({ userObj }) => {
 				<input type="submit" value="Noweet" />
 			</form>
 			<div>
-				{ noweets.map((noweet) => (
-					<div key={noweet.id}>
-						<h4>{noweet.text}</h4>
-					</div>
-					))}
+				{ noweets.map((noweet) => 
+					<Noweet key={noweet.id} 
+					noweetObj={noweet} 
+					isOwner={noweet.creatorId === userObj.uid} />
+					)}
 			</div>
 		</div>
 	)
