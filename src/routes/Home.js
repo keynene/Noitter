@@ -1,5 +1,6 @@
 import Noweet from 'components/Noweet';
-import { dbService } from 'fbase';
+import { v4 as uuidv4 } from 'uuid';
+import { dbService, storageService } from 'fbase';
 import React, { useEffect, useState } from 'react';
 
 //App → AppRouter → Home 으로 전달받은 userObj로 "누가 로그인 했는지" 확인 가능해졌음
@@ -46,12 +47,24 @@ const Home = ({ userObj }) => {
 	const onSubmit = async (e) => {
 		// submit 버튼 클릭하면 firebase의 collections에 데이터가 추가됨
 		e.preventDefault();
-		await dbService.collection("noweets").add({
+		let attachmentUrl = ""; //사진이 없을때도 게시글 등록할 수 있어야 하니까 (noweetObj참고)
+
+		//사진이 있을때만 아래 코드 실행해서 사진 업로드 진행함
+		if(attachment != ""){ 
+			//uuidv4() : 랜덤문자열을 생성해줌
+			const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+			const response = await attachmentRef.putString(attachment, "data_url");
+			attachmentUrl = await response.ref.getDownloadURL();
+		}
+
+		//사진없을때는 그냥 attachmentUrl="" 인 상태로 빈 string만 업로드
+		const noweetObj = {
 			text:noweet,
 			createdAt: Date.now(),
-			creatorId: userObj.uid, 
-			//useObj 콘솔에 찍어보고 요소 중 유저 ID를 저장하고있는 변수인 uid 확인해서 가져오기
-		});
+			creatorId: userObj.uid,
+			attachmentUrl
+			}
+		await dbService.collection("noweets").add(noweetObj);
 		//데이터 올리고 noweet은 초기화 시켜주기
 		setNoweet("");
 	}

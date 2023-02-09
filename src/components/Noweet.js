@@ -65,6 +65,10 @@ const Noweet = ({ noweetObj, isOwner }) => {
 			)	: (
 					<>
 						<h4>{ noweetObj.text }</h4>
+						{ noweetObj.attachmentUrl && ( 
+							//모든 게시글이 사진이 있는것이 아니니까 사진이 존재할때만 출력하도록 조정
+						  <img src={noweetObj.attachmentUrl} width="50px" height="50px" />
+						)}
 						{isOwner && (
 							<>
 								{/* Delete */}
