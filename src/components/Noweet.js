@@ -1,4 +1,4 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
 
 const Noweet = ({ noweetObj, isOwner }) => {
@@ -16,6 +16,7 @@ const Noweet = ({ noweetObj, isOwner }) => {
 			//firebase(dbService)의 noweets안에 id값이 저장되어 있으므로,
 			//Home에서 가져온 noweet(noweetObj)의 id값에 해당되는 dbService noweets를 .delete()를 이용하여 삭제하기
 			await dbService.doc(`noweets/${noweetObj.id}`).delete();
+			await storageService.refFromURL(noweetObj.attachmentUrl).delete();
 		}
 	}
 	// 1. editing을 false로 선언했으니 toggleEditing은 editing을 true로 바꿔줌

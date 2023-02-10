@@ -50,7 +50,7 @@ const Home = ({ userObj }) => {
 		let attachmentUrl = ""; //사진이 없을때도 게시글 등록할 수 있어야 하니까 (noweetObj참고)
 
 		//사진이 있을때만 아래 코드 실행해서 사진 업로드 진행함
-		if(attachment != ""){ 
+		if(attachment !== ""){ 
 			//uuidv4() : 랜덤문자열을 생성해줌
 			const attachmentRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
 			const response = await attachmentRef.putString(attachment, "data_url");
@@ -63,7 +63,7 @@ const Home = ({ userObj }) => {
 			createdAt: Date.now(),
 			creatorId: userObj.uid,
 			attachmentUrl
-			}
+		}
 		await dbService.collection("noweets").add(noweetObj);
 		//데이터 올리고 noweet은 초기화 시켜주기
 		setNoweet("");
@@ -123,8 +123,9 @@ const Home = ({ userObj }) => {
 					<Noweet 
 						key={noweet.id} 
 						noweetObj={noweet} 
-						isOwner={noweet.creatorId === userObj.uid} />
-					)}
+						isOwner={noweet.creatorId === userObj.uid} 
+					/>
+				)}
 			</div>
 		</div>
 	)
