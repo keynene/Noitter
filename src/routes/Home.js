@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 const Home = ({ userObj }) => { 
 	const [noweet, setNoweet] = useState("");
 	const [noweets, setNoweets] = useState([]);
-	const [attachment, setAttachment] = useState();
+	const [attachment, setAttachment] = useState("");
 
 	/*
 	forEach방식의 get() : 새로 생성/변경된 데이터는 새로고침해야 반영됨
