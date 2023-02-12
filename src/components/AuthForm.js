@@ -40,7 +40,7 @@ const toggleAccount = () => setNewAccount((prev) => !prev);
 
 	return (
 		<div>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} className="container">
 				<input
 					name="email"
 					type="email"
@@ -48,6 +48,7 @@ const toggleAccount = () => setNewAccount((prev) => !prev);
 					required
 					value={email}
 					onChange={onChange}
+					className="authInput"
 				/>
 				<input
 					name="password"
@@ -56,14 +57,18 @@ const toggleAccount = () => setNewAccount((prev) => !prev);
 					required
 					value={password}
 					onChange={onChange}
+					className="authInput"
 				/>
-				<input type="submit" value={newAccount ? "Create Account" : "Sign In"} />
+				<input 
+					type="submit" 
+					value={newAccount ? "Create Account" : "Sign In"} 
+					className="authInput authSubmit"
+				/>
 				<br />
-				{error}
+				{error && <span className="authError">{error}</span>}
 			</form>
-			<span onClick={ toggleAccount } > { newAccount ? 
-				"Sign in" 
-				: "Create Account" }
+			<span onClick={ toggleAccount } className="authSwitch" > 
+				{ newAccount ? "Sign in"  : "Create Account" }
 			</span>
 		</div>
 	)

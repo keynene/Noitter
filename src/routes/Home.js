@@ -44,9 +44,9 @@ const Home = ({ userObj }) => {
 
 	
 	return(
-		<div>
+		<div className="container">
 			<NoweetFactory userObj={ userObj } />
-			<div>
+			<div style={{ marginTop: 30 }}>
 				{/* Read */}
 				{ noweets.map((noweet) => 
 					<Noweet 

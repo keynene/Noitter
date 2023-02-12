@@ -5,6 +5,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 // import firebase from 'firebase/compat/app';
 import { BrowserRouter } from 'react-router-dom';
+import "./styles.css";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

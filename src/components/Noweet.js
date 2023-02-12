@@ -1,5 +1,7 @@
 import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Noweet = ({ noweetObj, isOwner }) => {
 	//Delete 기능 : ok가 True이면 삭제, 아니면 삭제안함
@@ -9,9 +11,11 @@ const Noweet = ({ noweetObj, isOwner }) => {
 	const onDeleteClick = async() => {
 		const ok = window.confirm("Are you sure you want to delete this noweet?");
 		if(ok) {
-			//es6문법 : 템플릿 리터럴(Template Literal)
-			//`백틱`으로 문자열 표현 가능, ${}와 함께 사용하여 문자열 중간에 변수를 넣을 수 있음
-			//기존의 "따옴표"와 +기호와 함께 쓰는 것과 동일
+			/*
+				es6문법 : 템플릿 리터럴(Template Literal)
+				`백틱`으로 문자열 표현 가능, ${}와 함께 사용하여 문자열 중간에 변수를 넣을 수 있음
+				기존의 "따옴표"와 +기호와 함께 쓰는 것과 동일
+			*/
 
 			//firebase(dbService)의 noweets안에 id값이 저장되어 있으므로,
 			//Home에서 가져온 noweet(noweetObj)의 id값에 해당되는 dbService noweets를 .delete()를 이용하여 삭제하기
@@ -42,7 +46,7 @@ const Noweet = ({ noweetObj, isOwner }) => {
 	}
 
 	return (
-		<div>
+		<div className="nweet">
 			{/* Update */}
 			{ 
 				//2. editing이 true면 수정하는폼 보여줌, false이면 수정/삭제 버튼 보여줌
@@ -50,34 +54,45 @@ const Noweet = ({ noweetObj, isOwner }) => {
 					<>
 						{ isOwner && (
 							<>
-								<form onSubmit={ onSubmit }>
+								<form onSubmit={ onSubmit } className="container nweetEdit">
 									<input 
 										type="text" 
 										placeholder="Edit your Noweet" 
 										value={ newNoweet } 
 										onChange = { onChange }
-										required />
-									<input type="submit" value="Update Noweet" />
+										required 
+										autoFocus
+										className="formInput"
+									/>
+									<input type="submit" value="Update Noweet" className="formBtn" />
 								</form>
-								<button onClick={ toggleEditing } >Cancel</button>
-							</>)
-						}
+								<span onClick={toggleEditing} className="formBtn cancelBtn">
+									Cancel
+								</span>
+							</>
+						)}
 					</>
 			)	: (
 					<>
 						<h4>{ noweetObj.text }</h4>
 						{ noweetObj.attachmentUrl && ( 
 							//모든 게시글이 사진이 있는것이 아니니까 사진이 존재할때만 출력하도록 조정
-						  <img src={noweetObj.attachmentUrl} width="50px" height="50px" />
+						  <img src={noweetObj.attachmentUrl} alt="noweet" />
 						)}
 						{isOwner && (
-							<>
+							<div className="nweet__actions">
+
 								{/* Delete */}
-								<button onClick={ onDeleteClick }>Delete Noweet</button>
+								<span onClick={onDeleteClick}>
+									<FontAwesomeIcon icon={faTrash} />
+								</span>
+
 								{/* Update */}
-								<button onClick={ toggleEditing }>Edit Noweet</button>
-							</>)
-						}
+								<span onClick={toggleEditing}>
+                	<FontAwesomeIcon icon={faPencilAlt} />
+								</span>
+							</div>
+						)}
 					</>
 			)}
 		</div>
