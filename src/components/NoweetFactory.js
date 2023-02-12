@@ -77,7 +77,7 @@ const NoweetFactory = ({ userObj }) => {
 				{/* 파일이 선택되면(파일이 존재하면) 미리보기, clear 버튼 노출 */}
 				{ attachment && (
 					<div>
-						<img src={ attachment } width="50px" height="50px" />
+						<img src={ attachment } width="50px" height="50px" alt="attachment"/>
 						<button onClick={ onClearAttachment }>Clear</button>
 					</div>
 				) }

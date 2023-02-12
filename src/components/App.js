@@ -16,7 +16,7 @@ function App() {
     authService.onAuthStateChanged((user) => { 
       if(user){
         //user == true이면 우리유저니까 로그인
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true); → setUserObj로 변경됨
         /*
           authService가 변경될 때 user값을 userObj에 넣기
           setUserObj(user) ↓ 아래와 같이 변경된 이유 : updateProfile 때문
@@ -32,7 +32,8 @@ function App() {
         });
 
       } else {
-        setIsLoggedIn(false);
+        setUserObj(null);
+        // setIsLoggedIn(false);
       }
       setInit(true);
      })
