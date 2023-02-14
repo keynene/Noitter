@@ -1,24 +1,24 @@
 import React from "react";
-import { authService, firebaseInstance } from "fbase";
-import AuthForm from "components/AuthForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { authService, firebaseInstance } from "fbase";
+import AuthForm from "components/AuthForm";
 
 const Auth = () => {
 /**  firebase 이용하여 소셜 로그인 기능 구현 */
-const onSocialClick = async (e) => {
-  const {
-    target: { name }
-  } = e;
+  const onSocialClick = async (e) => {
+    const {
+      target: { name }
+    } = e;
 
-  let provider;
-  if (name === "google"){
-    provider = new firebaseInstance.auth.GoogleAuthProvider();
-  } else if (name === "github"){
-    provider = new firebaseInstance.auth.GithubAuthProvider();
-  }
-  await authService.signInWithPopup(provider);
-};
+    let provider;
+    if (name === "google"){
+      provider = new firebaseInstance.auth.GoogleAuthProvider();
+    } else if (name === "github"){
+      provider = new firebaseInstance.auth.GithubAuthProvider();
+    }
+    await authService.signInWithPopup(provider);
+  };
 
   return (
     <div className="authContainer">

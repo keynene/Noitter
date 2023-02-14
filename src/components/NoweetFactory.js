@@ -1,6 +1,6 @@
-import { dbService, storageService } from "fbase";
-import { v4 as uuidv4 } from 'uuid';
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
+import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -69,50 +69,50 @@ const NoweetFactory = ({ userObj }) => {
 
 
 	return (
-			// Create 
-			<form onSubmit={ onSubmit } className="factoryForm">
-				<div className="factoryInput__container">
-					<input 
-						value={ noweet } 
-						onChange={ onChange } 
-						type="text" 
-						placeholder="'What's on your mind?" 
-						maxLength={120} 
-						className="factoryInput__input"
-					/>
-					<input type="submit" value="&rarr;" className="factoryInput__arrow" />
-				</div>
-				<label htmlFor="attach-file" className="factoryInput__label">
-					<span>Add photos</span>
-					<FontAwesomeIcon icon={faPlus} />
-				</label>
-
+		// Create 
+		<form onSubmit={ onSubmit } className="factoryForm">
+			<div className="factoryInput__container">
 				<input 
-					type="file" 
-					accept="image/*" 
-					onChange={ onFileChange } 
-					id="attach-file"
-					style={{
-						opacity: 0,
-					}}
+					value={ noweet } 
+					onChange={ onChange } 
+					type="text" 
+					placeholder="'What's on your mind?" 
+					maxLength={120} 
+					className="factoryInput__input"
 				/>
+				<input type="submit" value="&rarr;" className="factoryInput__arrow" />
+			</div>
+			<label htmlFor="attach-file" className="factoryInput__label">
+				<span>Add photos</span>
+				<FontAwesomeIcon icon={faPlus} />
+			</label>
 
-				{/* 파일이 선택되면(파일이 존재하면) 미리보기, clear 버튼 노출 */}
-				{ attachment && (
-					<div className="factoryForm__attachment">
-						<img
-							src={ attachment }
-							style={{
-								backgroundImage: attachment,
-							}}
-							alt="attachment"
-						/>
-						<div className="factoryForm__clear" onClick={onClearAttachment}>
-							<span>Remove</span>
-							<FontAwesomeIcon icon={faTimes} />
-						</div>
+			<input 
+				type="file" 
+				accept="image/*" 
+				onChange={ onFileChange } 
+				id="attach-file"
+				style={{
+					opacity: 0,
+				}}
+			/>
+
+			{/* 파일이 선택되면(파일이 존재하면) 미리보기, clear 버튼 노출 */}
+			{ attachment && (
+				<div className="factoryForm__attachment">
+					<img
+						src={ attachment }
+						style={{
+							backgroundImage: attachment,
+						}}
+						alt="attachment"
+					/>
+					<div className="factoryForm__clear" onClick={onClearAttachment}>
+						<span>Remove</span>
+						<FontAwesomeIcon icon={faTimes} />
 					</div>
-				) }
+				</div>
+			)}
 		</form>
 	)
 }

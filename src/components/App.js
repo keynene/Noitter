@@ -16,7 +16,7 @@ function App() {
     authService.onAuthStateChanged((user) => { 
       if(user){
         //user == true이면 우리유저니까 로그인
-        // setIsLoggedIn(true); → setUserObj로 변경됨
+        setIsLoggedIn(true);
         /*
           authService가 변경될 때 user값을 userObj에 넣기
           setUserObj(user) ↓ 아래와 같이 변경된 이유 : updateProfile 때문
@@ -32,8 +32,8 @@ function App() {
         });
 
       } else {
-        setUserObj(null);
-        // setIsLoggedIn(false);
+        // setUserObj(null);
+        setIsLoggedIn(false);
       }
       setInit(true);
      })
@@ -57,7 +57,14 @@ function App() {
     <div>
       {/*  useEffect를 통해 init(Create Account나 Login 즉 로그인 시도한 흔적이 있으면 실행)을 확인 */}
       {/*  init이 true이면 AppRouter실행 (Router.js에서 확인) */}
-      { init ? <AppRouter refreshUser={ refreshUser } isLoggedIn={ isLoggedIn } userObj={ userObj }/> : "Initializing..." }
+      { init ? 
+        <AppRouter 
+          refreshUser={ refreshUser } 
+          isLoggedIn={ isLoggedIn } 
+          // isLoggedIn={ Boolean(userObj) } 
+          userObj={ userObj }/>
+        : "Initializing..." 
+      }
       <footer>&copy; {new Date().getFullYear()} Noitter</footer>
     </div>
 

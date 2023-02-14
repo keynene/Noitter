@@ -1,5 +1,5 @@
-import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
+import { dbService, storageService } from "fbase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
@@ -49,51 +49,51 @@ const Noweet = ({ noweetObj, isOwner }) => {
 		<div className="nweet">
 			{/* Update */}
 			{ 
-				//2. editing이 true면 수정하는폼 보여줌, false이면 수정/삭제 버튼 보여줌
-				editing ? (
-					<>
-						{ isOwner && (
-							<>
-								<form onSubmit={ onSubmit } className="container nweetEdit">
-									<input 
-										type="text" 
-										placeholder="Edit your Noweet" 
-										value={ newNoweet } 
-										onChange = { onChange }
-										required 
-										autoFocus
-										className="formInput"
-									/>
-									<input type="submit" value="Update Noweet" className="formBtn" />
-								</form>
-								<span onClick={toggleEditing} className="formBtn cancelBtn">
-									Cancel
-								</span>
-							</>
-						)}
-					</>
+			//2. editing이 true면 수정하는폼 보여줌, false이면 수정/삭제 버튼 보여줌
+			editing ? (
+				<>
+					{ isOwner && (
+						<>
+							<form onSubmit={ onSubmit } className="container nweetEdit">
+								<input 
+									type="text" 
+									placeholder="Edit your Noweet" 
+									value={ newNoweet } 
+									onChange = { onChange }
+									required 
+									autoFocus
+									className="formInput"
+								/>
+								<input type="submit" value="Update Noweet" className="formBtn" />
+							</form>
+							<span onClick={toggleEditing} className="formBtn cancelBtn">
+								Cancel
+							</span>
+						</>
+					)}
+				</>
 			)	: (
-					<>
-						<h4>{ noweetObj.text }</h4>
-						{ noweetObj.attachmentUrl && ( 
-							//모든 게시글이 사진이 있는것이 아니니까 사진이 존재할때만 출력하도록 조정
-						  <img src={noweetObj.attachmentUrl} alt="noweet" />
-						)}
-						{isOwner && (
-							<div className="nweet__actions">
+				<>
+					<h4>{ noweetObj.text }</h4>
+					{ noweetObj.attachmentUrl && ( 
+						//모든 게시글이 사진이 있는것이 아니니까 사진이 존재할때만 출력하도록 조정
+						<img src={noweetObj.attachmentUrl} alt="noweet" />
+					)}
+					{isOwner && (
+						<div className="nweet__actions">
 
-								{/* Delete */}
-								<span onClick={onDeleteClick}>
-									<FontAwesomeIcon icon={faTrash} />
-								</span>
+							{/* Delete */}
+							<span onClick={onDeleteClick}>
+								<FontAwesomeIcon icon={faTrash} />
+							</span>
 
-								{/* Update */}
-								<span onClick={toggleEditing}>
-                	<FontAwesomeIcon icon={faPencilAlt} />
-								</span>
-							</div>
-						)}
-					</>
+							{/* Update */}
+							<span onClick={toggleEditing}>
+								<FontAwesomeIcon icon={faPencilAlt} />
+							</span>
+						</div>
+					)}
+				</>
 			)}
 		</div>
 	)
