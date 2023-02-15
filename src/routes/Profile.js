@@ -7,7 +7,7 @@ const Profile = ({ refreshUser, userObj }) => {
 	const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 	const onLogOutClick = () => { 
 		authService.signOut();
-		navigate("/");
+		navigate("Noitter/");
 	}
 	
 	//자신의 데이터만 가지고 오기

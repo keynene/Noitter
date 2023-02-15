@@ -23,11 +23,11 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
 					{/* App의 useEffect를 통해 확인했던 isLoggedin이 true이면 Home을 아니면 Auth를 실행 */}
 					{ isLoggedIn ? (
 						<>
-							<Route path='/' element={ <Home userObj={ userObj } /> } />
-							<Route path='/profile' element={ <Profile userObj={ userObj } refreshUser={ refreshUser } /> } />
+							<Route path='Noitter/' element={ <Home userObj={ userObj } /> } />
+							<Route path='Noitter/profile' element={ <Profile userObj={ userObj } refreshUser={ refreshUser } /> } />
 						</> 
 					) : (
-						<Route path='/' element={ <Auth /> } />
+						<Route path='Noitter/' element={ <Auth /> } />
 					)}
 				</Routes>
 			</div>
