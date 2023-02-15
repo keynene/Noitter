@@ -9,14 +9,14 @@ const Navigation = ({ userObj }) => (
 	<nav>
 		<ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
 			<li>
-				<Link to="Noitter/" style={{ marginRight: 10 }}>
+				<Link to="/" style={{ marginRight: 10 }}>
 					<FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
 				</Link>
 			</li>
 			<li>
 				{/* <Link to ="/profile">{ userObj.displayName ?? userObj.email.split('@')[0] }의 Profile</Link> */}
 				<Link
-					to="Noitter/profile"
+					to="/profile"
 					style={{
 						marginLeft: 10,
 						display: "flex",
@@ -27,7 +27,7 @@ const Navigation = ({ userObj }) => (
 				>
 					<FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
 					<span style={{ marginTop: 10 }}>
-						{ userObj.displayName ?? `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`}
+						{ `${userObj.displayName}의 Profile` ?? `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`}
 					</span>
 				</Link>
 			</li>

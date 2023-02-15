@@ -7,7 +7,7 @@ const Profile = ({ refreshUser, userObj }) => {
 	const [newDisplayName, setNewDisplayName] = useState(userObj.displayName);
 	const onLogOutClick = () => { 
 		authService.signOut();
-		// navigate("Noitter/");
+		navigate("/");
 	}
 	
 	/*
