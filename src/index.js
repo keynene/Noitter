@@ -4,12 +4,12 @@ import App from 'components/App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 // import firebase from 'firebase/compat/app';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import "./styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter >
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     {/* <React.StrictMode> */}
     {/* 코드가 2번 실행되는 것 방지하기위해 StrictMode 주석처리함 : 
     strictmode는 side effect를 줄이기 위해 일부러 두번씩 실행시킴 */}
