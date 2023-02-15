@@ -32,7 +32,7 @@ function App() {
         });
 
       } else {
-        // setUserObj(null);
+        setUserObj(null);
         setIsLoggedIn(false);
       }
       setInit(true);

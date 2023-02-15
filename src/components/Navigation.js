@@ -5,6 +5,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = ({ userObj }) => (
+	
 	<nav>
 		<ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
 			<li>
@@ -26,9 +27,7 @@ const Navigation = ({ userObj }) => (
 				>
 					<FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
 					<span style={{ marginTop: 10 }}>
-						{ userObj.displayName
-							? `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`
-							: "Profile"}
+						{ userObj.displayName ?? `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`}
 					</span>
 				</Link>
 			</li>
