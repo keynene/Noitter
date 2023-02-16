@@ -27,7 +27,7 @@ const Navigation = ({ userObj }) => (
 				>
 					<FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
 					<span style={{ marginTop: 10 }}>
-						{ `${userObj.displayName}의 Profile` ?? `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`}
+						{ `${userObj.displayName ?? userObj.email.split('@')[0] }의 Profile`}
 					</span>
 				</Link>
 			</li>
