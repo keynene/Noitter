@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Noitter/static/css/main.56cde203.css",
-    "main.js": "/Noitter/static/js/main.3dd7c089.js",
+    "main.js": "/Noitter/static/js/main.66e77ca6.js",
     "static/js/787.971d2733.chunk.js": "/Noitter/static/js/787.971d2733.chunk.js",
     "service-worker.js": "/Noitter/service-worker.js",
     "index.html": "/Noitter/index.html",
     "main.56cde203.css.map": "/Noitter/static/css/main.56cde203.css.map",
-    "main.3dd7c089.js.map": "/Noitter/static/js/main.3dd7c089.js.map",
+    "main.66e77ca6.js.map": "/Noitter/static/js/main.66e77ca6.js.map",
     "787.971d2733.chunk.js.map": "/Noitter/static/js/787.971d2733.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.56cde203.css",
-    "static/js/main.3dd7c089.js"
+    "static/js/main.66e77ca6.js"
   ]
 }
