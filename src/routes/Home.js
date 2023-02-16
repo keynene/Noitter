@@ -32,13 +32,16 @@ const Home = ({ userObj }) => {
 		위의 forEach를 이용한 get방식과 동일한데 re-render를 줄여줌
 		forEach가 아닌 Array를 새로 만들어서 Noweets Array에 넣어주는 방법임
 		*/
-		dbService.collection("noweets").onSnapshot((snapshot) => {
-			const noweetArray = snapshot.docs.map((doc) => ({ 
-				id:doc.id, 
-				...doc.data(), 
-			}));
-			setNoweets(noweetArray);
-		});
+		dbService
+			.collection("noweets")
+			.orderBy("createdAt", "desc")
+			.onSnapshot((snapshot) => {
+				const noweetArray = snapshot.docs.map((doc) => ({ 
+					id:doc.id, 
+					...doc.data(), 
+				}))
+				setNoweets(noweetArray);
+			})
 	}, []);
 
 
